@@ -1,0 +1,36 @@
+﻿ul {
+    list-style-type: none;
+}
+
+.img-thumbnail {
+    width: 140px;
+    height: 140px;
+    float: left;
+}
+
+.modal-custom {
+    top: 25%;
+}
+
+.btn-primary {
+    margin: 10px;
+}
+
+
+ .search-box input {
+        width: 100%;
+    }
+
+.search-results {
+    float: right;
+}
+
+
+/*affix property*/
+
+.affix-top{
+    position:absolute;
+}
+.affix{
+    top:0;
+}

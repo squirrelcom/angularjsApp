@@ -1,0 +1,71 @@
+﻿<div class="jumbotron">
+    <h1>Search Engine</h1>
+    <p>A simple search engine to search users of GitHub and few details about them.</p>
+
+    <h4>
+        <span class="label label-default">HTML5</span>
+        <span class="label label-primary">CSS3</span>
+        <span class="label label-success">JavaScript</span>
+        <span class="label label-info">Jquery</span>
+        <span class="label label-warning">BootStrap</span>
+        <span class="label label-danger">AngularJS</span>
+    </h4>
+
+</div>
+
+<div class="container">
+    <div class="container-fluid row">
+
+        <!--This search box will be fixed -->
+        <div class="col-sm-2 search-box" dir="ltr">
+            <!--Sidebar content-->
+            <h4><span class="label label-info">Search: </span></h4>
+            <input class="alert alert-warning " ng-model="query" placeholder="Search the results...">
+            <div>
+                <div class="alert alert-success">What you typed: {{query}}</div>
+            </div>
+
+            Sort By:
+            <select class="dropdown" ng-model="sortUsersBy">                       
+                    <option  value="login"><a role="menuitem"> Alphabetical </a></option>
+                    <option selected value="id"><a role="menuitem" value="id">ID Number </a></option>
+                
+            </select>
+
+        </div>
+
+        <div class="col-sm-10 search-results">
+            <!--Body content-->
+            <ul class="phones panel-success">
+                <li class="panel-heading" ng-repeat="user in users | filter:query | orderBy:sortUsersBy">
+                    <img class="img-thumbnail" ng-src="{{user.avatar_url}}" />
+                    <div class="row clearfix">
+                        <button class="btn btn-primary">ID: {{user.id}}</button>
+                        Login Name: <b>{{user.login | uppercase}}  </b>
+
+                        <div>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#{{user.id}}">
+                                User Url
+                            </button>
+                        </div>
+                        <!-- Modal description -->
+                        <div class="modal modal-custom fade" id="{{user.id}}" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-body">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Url to {{user.login}} details
+                                    </div>
+                                    <div class="panel-body">
+                                        <a href="index.html#/users/{{user.login}}">Find details to {{user.login}} here.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Modal -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End of controller -->
